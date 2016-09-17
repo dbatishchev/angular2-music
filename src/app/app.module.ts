@@ -9,7 +9,8 @@ import { AlbumComponent } from './components/album/album.component';
 import { ArtistComponent } from './components/artist/artist.component';
 import { LoginComponent } from './components/login/login.component';
 
-import { appRouting } from './app.routing';
+import { routing } from './app.routing';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +18,14 @@ import { appRouting } from './app.routing';
     HomeComponent,
     AlbumComponent,
     ArtistComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    appRouting
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]
