@@ -19,7 +19,7 @@ export class AuthService {
      * @returns {boolean}
      */
     isLoggedIn(): boolean {
-        return this.token && this.token.accessToken && this.token.userId;
+        return !!(this.token && this.token.accessToken && this.token.userId);
     }
 
     /**
@@ -40,12 +40,17 @@ export class AuthService {
      *
      * @returns {any}
      */
-    getTokenFromStorage() {
-        let token = window.localStorage.getItem(this.STORAGE_KEY);
-        if (token) {
-            token = JSON.parse(token);
+    getTokenFromStorage(): Token|null {
+        let tokenFromStorage = window.localStorage.getItem(this.STORAGE_KEY);
+        if (tokenFromStorage) {
+            let parsedToken = JSON.parse(tokenFromStorage);
+
+            let token = new Token();
+            token.userId = parsedToken.userId;
+            token.accessToken = parsedToken.accessToken;
+
+            return token;
         }
-        return token;
     }
 
     /**
